@@ -18,7 +18,8 @@ public class KafkaConfiguration {
     public KafkaStreamsConfiguration getStreamsConfig() {
         Map<String, Object> props = new HashMap<>();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "groupId3");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092");
+//        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka1:9092,kafka2:9093,kafka3:9094");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 

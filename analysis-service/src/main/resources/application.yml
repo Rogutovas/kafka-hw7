@@ -19,8 +19,8 @@ spring:
     ansi:
       enabled: always
   datasource:
-#    url: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
+    url: jdbc:postgresql://postgres:5432/postgres?currentSchema=public
+#    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
     username: postgres
     password: password
   jpa:
@@ -32,8 +32,8 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   kafka:
-#    bootstrap-servers: kafka1:9092,kafka2:9093,kafka3:9094
-    bootstrap-servers: localhost:19092,localhost:19093,localhost:19094
+    bootstrap-servers: kafka1:9092,kafka2:9093,kafka3:9094
+#    bootstrap-servers: localhost:19092,localhost:19093,localhost:19094
     consumer:
       group-id: "groupId3"
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

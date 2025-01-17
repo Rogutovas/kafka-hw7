@@ -103,33 +103,33 @@ services:
       - ./postgres/custom-config.conf:/etc/postgresql/postgresql.conf
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
 
-#  document-api:
-#    image: client:0.0.1
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-doc
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - kafka3
-#  validate-service:
-#    image: client:0.0.2
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-validate
-#    ports:
-#      - "8081:8081"
-#    depends_on:
-#      - postgres
-#      - kafka3
-#  analysis-service:
-#    image: client:0.0.3
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-analysis
-#    ports:
-#      - "8082:8082"
-#    depends_on:
-#      - postgres
-#      - kafka3
+  document-api:
+    image: client:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile-doc
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka3
+  validate-service:
+    image: client:0.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile-validate
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+      - kafka3
+  analysis-service:
+    image: client:0.0.3
+    build:
+      context: .
+      dockerfile: Dockerfile-analysis
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+      - kafka3
 
