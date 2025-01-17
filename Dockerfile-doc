@@ -1,0 +1,15 @@
+FROM openjdk:17
+
+ARG UID=1007
+ARG GID=1007
+
+USER root
+RUN groupadd -g "${GID}" documents-api \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" documents-api
+
+WORKDIR /home/documents-api
+COPY ./documents-api/build/libs/documents-api-1.0-SNAPSHOT.jar .
+RUN chown -R documents-api:documents-api /home/documents-api/
+USER documents-api
+
+CMD ["java", "-jar", "documents-api-1.0-SNAPSHOT.jar"]

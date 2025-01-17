@@ -1,0 +1,15 @@
+FROM openjdk:17
+
+ARG UID=1007
+ARG GID=1007
+
+USER root
+RUN groupadd -g "${GID}" analysis-service \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" analysis-service
+
+WORKDIR /home/analysis-service
+COPY ./analysis-service/build/libs/analysis-service-1.0-SNAPSHOT.jar .
+RUN chown -R analysis-service:analysis-service /home/analysis-service/
+USER analysis-service
+
+CMD ["java", "-jar", "analysis-service-1.0-SNAPSHOT.jar"]

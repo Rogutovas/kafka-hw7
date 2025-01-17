@@ -1,0 +1,15 @@
+FROM openjdk:17
+
+ARG UID=1007
+ARG GID=1007
+
+USER root
+RUN groupadd -g "${GID}" validate-service \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" validate-service
+
+WORKDIR /home/validate-service
+COPY ./validate-service/build/libs/validate-service-1.0-SNAPSHOT.jar .
+RUN chown -R validate-service:validate-service /home/validate-service/
+USER validate-service
+
+CMD ["java", "-jar", "validate-service-1.0-SNAPSHOT.jar"]
